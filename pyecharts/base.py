@@ -256,7 +256,10 @@ class Base(object):
 
         # 这里使用 jinjia2 做模板，比单纯替换要好一些
         tmp = Template(s)
-        html = tmp.render(opt=my_option.decode('utf8'), chartid=divid)
+        try:
+            html = tmp.render(opt=my_option.decode('utf8'), chartid=divid)
+        except:
+            html = tmp.render(opt=my_option, chartid=divid)
 
         return html
 
